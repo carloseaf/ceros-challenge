@@ -1,0 +1,9 @@
+---
+- name: Build an image with the command module for a remote docker host
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Ceros Ski build
+      shell: aws cloudformation deploy --capabilities CAPABILITY_NAMED_IAM --template-file /ceros-challenge/aws_templates/ec2.yml --stack-name ceros-challenge-carlos --parameter-overrides InstanceType='t2.micro'
+

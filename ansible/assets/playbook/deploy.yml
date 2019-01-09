@@ -1,0 +1,14 @@
+---
+- name: Build an image with the command module for a remote docker host
+  hosts: ceros-ski
+
+  tasks:
+    - name: Deploy ceros-ski-web [1]
+      shell: docker run --name ceros-ski-web-1 --restart=always -itd ceros-ski-web
+
+    - name: Deploy ceros-ski-web [2]
+      shell: docker run --name ceros-ski-web-2 --restart=always -itd ceros-ski-web
+
+    - name: Deploy nginx load balance
+      shell: docker run --name nginx -p 80:80 --restart=always --link ceros-ski-web-1 --link ceros-ski-web-2 -itd nginx
+

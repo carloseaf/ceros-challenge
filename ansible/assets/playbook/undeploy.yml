@@ -1,0 +1,9 @@
+---
+- name: Build an image with the command module for a remote docker host
+  hosts: ceros-ski
+
+  tasks:
+    - name: Undeploy containers
+      shell: docker rm -f $(docker ps -aqf name="(nginx|ceros-ski-web-1|ceros-ski-web-2)")
+
+

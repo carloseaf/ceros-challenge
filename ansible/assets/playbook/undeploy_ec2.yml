@@ -1,0 +1,9 @@
+---
+- name: Build an image with the command module for a remote docker host
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Delete Ceros challenge
+      shell: aws cloudformation delete-stack --stack-name ceros-challenge-carlos 
+
