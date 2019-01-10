@@ -56,6 +56,7 @@ Mappings:
       HVM64: ami-0bdb828fd58c52235
       HVMG2: ami-066ee5fd4a9ef77f1    
 Resources:
+# EC2 instance in which two instances of web application and one instance of nginx are deployed
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
@@ -66,6 +67,7 @@ Resources:
       IamInstanceProfile:
         Ref: CerosChallengeInstanceProfile      
       ImageId: "ami-035bbacb010ca270b"        
+# UserData is setting rsa key, it`s not corrected, only for challenge purpose
       UserData:
           Fn::Base64:
             Fn::Join:
@@ -77,6 +79,7 @@ Resources:
               - "mv id_rsa.pub /root/.ssh/authorized_keys\n"
               - "chmod 400 /root/.ssh/authorized_keys\n"
               - "service ssh restart\n"
+# Security Group which opens port 22 used by Ansible and port 80 used by web application
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -91,6 +94,7 @@ Resources:
         FromPort: '80'
         ToPort: '80'
         CidrIp: 0.0.0.0/0
+# Policy created and associated to EC2, because no EC2 resource should be accessed
   CerosChallengeInstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:

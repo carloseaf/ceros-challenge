@@ -8,6 +8,7 @@ RUN apt-get update && \
     apt-get install -y software-properties-common vim wget curl iputils-ping unzip python3-pip
 
 # Install aws cli
+# aws cli is being used by Ansible to create and delete Cloudformation stack
 RUN pip3 install awscli --upgrade --user && \
     ln -s /root/.local/bin/aws /bin/aws && \
     mkdir -p /root/.aws && \
@@ -18,6 +19,7 @@ RUN apt-add-repository ppa:ansible/ansible && \
     apt-get update && \
     apt-get install -y ansible
 
+# Copying Playbook, keys and cloudformation template into the image
 RUN mkdir -p /root/.ssh/ /etc/ansible/playbook /etc/ansible/group_vars /etc/ansible/keys && \
     cp /assets/hosts /etc/ansible/. && \
     cp /assets/keys/* /etc/ansible/keys/. && \

@@ -1,3 +1,8 @@
+# Simple load balance in port 80
+# Containers:
+#  - ceros-ski-web-1
+#  - ceros-ski-web-2
+
 FROM ubuntu:18.04
 
 LABEL author="Carlos Eduardo" \
@@ -7,6 +12,7 @@ LABEL author="Carlos Eduardo" \
 RUN apt-get update && \
     apt-get install -y nginx
 
+# Copying Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
