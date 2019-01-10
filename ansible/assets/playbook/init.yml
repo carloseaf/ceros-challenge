@@ -4,7 +4,7 @@
 
   tasks:
     - name: Download ceros ski project
-      shell: rm -rf /ceros-challenge && mkdir /ceros-challenge && git clone https://16be005cfa58272196251b2974be185d823ca04a@github.com/carloseaf/ceros-challenge.git /ceros-challenge
+      shell: rm -rf /ceros-challenge && mkdir /ceros-challenge && git clone https://github.com/carloseaf/ceros-challenge.git /ceros-challenge
 
     - name: Ceros Ski build
       shell: docker build -t ceros-ski-web /ceros-challenge/ceros-ski

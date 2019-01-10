@@ -1,9 +1,0 @@
----
-- name: Test
-  hosts: localhost
-  connection: local
-
-  tasks:
-    - name: AWS Test
-      shell: aws ec2 describe-instances > /tmp/instances
-

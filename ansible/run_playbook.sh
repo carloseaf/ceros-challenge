@@ -14,5 +14,4 @@
 host_ip=$1
 playbook=$2
 
-docker run -e HOST_IP=$host_ip -it ansible ansible-playbook /etc/ansible/playbook/${playbook}.yml
-
+docker run -e HOST_IP=$host_ip -e REGION=us-east-1 -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" -e AWS_SESSION_TOKEN="${AWS_SESSION_TOKEN}" -it ansible ansible-playbook /etc/ansible/playbook/${playbook}.yml

@@ -74,7 +74,7 @@ Resources:
             - ''
             - - "#!/bin/bash\n"
               - "yum install -y git curl\n"
-              - "curl -H 'Authorization: token 16be005cfa58272196251b2974be185d823ca04a' -H 'Accept: application/vnd.github.v3.raw' -O -L https://raw.githubusercontent.com/carloseaf/ceros-challenge/master/key/id_rsa.pub\n"
+              - "curl -O -L https://raw.githubusercontent.com/carloseaf/ceros-challenge/master/key/id_rsa.pub\n"
               - "mkdir -p /root/.ssh\n"
               - "mv id_rsa.pub /root/.ssh/authorized_keys\n"
               - "chmod 400 /root/.ssh/authorized_keys\n"
